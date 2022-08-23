@@ -61,9 +61,16 @@ export async function logoutUser() {
     }
 }
 
-export async function redirectUser() {
+export async function redirectNonUsers() {
+    const user = await getUser();
+    if (!user) {
+        location.replace('/')
+    }
+}
+
+export async function redirectExistingUsers() {
     const user = await getUser();
     if (user) {
-        location.replace('/')
+        location.replace('/todo')
     }
 }

@@ -1,10 +1,10 @@
 const signUpForm = document.getElementById('user-input')
 const signInForm = document.getElementById('existing-user-input')
-import { redirectUser, signUpUser, signInUser } from './utils.js';
+import { redirectExistingUsers, signUpUser, signInUser } from './utils.js';
 
 
 async function onPageLoad() {
-    await redirectUser();
+   await redirectExistingUsers();
 }
 
 signUpForm.addEventListener('submit', async (e) => {
@@ -26,6 +26,5 @@ signInForm.addEventListener('submit', async (e) => {
     });
     console.log(signInForm)
 });
-
 
 onPageLoad();
