@@ -12,8 +12,14 @@ export async function signUpUser(userInfo) {
     });
     const data = await resp.json();
     if (resp.ok) {
-        console.log('you did it')
+        location.replace('/api/v1/todos')
     } else {
         console.error(data.message);
+    }
+}
+
+export async function redirectUser(user) {
+    if (user) {
+        location.replace('/api/v1/todos')
     }
 }
