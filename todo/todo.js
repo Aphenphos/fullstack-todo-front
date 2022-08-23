@@ -28,8 +28,10 @@ logout.addEventListener('click', async () => {
     await logoutUser();
 })
 
-function display() {
+const CreateTodos = createTodos(document.querySelector('#tasks'));
 
+function display() {
+CreateTodos()
 }
 
 handlePageLoad();
