@@ -18,13 +18,14 @@ export async function signUpUser(userInfo) {
     }
 }
 
-export async function getUser() {
+export async function signInUser(userInfo) {
     const resp = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
+        body: JSON.stringify(userInfo),
         credentials: 'include',
     });
     if (resp.ok) {

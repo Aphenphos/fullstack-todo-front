@@ -1,6 +1,6 @@
 const signUpForm = document.getElementById('user-input')
 const signInForm = document.getElementById('existing-user-input')
-import { redirectUser, signUpUser, getUser } from './utils.js';
+import { redirectUser, signUpUser, signInUser } from './utils.js';
 
 
 async function onPageLoad() {
@@ -20,11 +20,11 @@ signUpForm.addEventListener('submit', async (e) => {
 signInForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(signInForm);
-    await getUser({
+    await signInUser({
         email: formData.get('email'),
         password: formData.get('password'),
     });
-    console.log(signUpForm)
+    console.log(signInForm)
 });
 
 
