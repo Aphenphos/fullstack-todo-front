@@ -35,13 +35,14 @@ export async function signInUser(userInfo) {
     }
 }
 
-export async function getUser() {
+export async function getUser(userInfo) {
     const resp = await fetch(`${BASE_URL}/api/v1/users/me`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
+        body: JSON.stringify(userInfo),
         credentials: 'include',
     });
     if (resp.ok) {
@@ -60,8 +61,9 @@ export async function logoutUser() {
     }
 }
 
-export async function redirectUser(user) {
+export async function redirectUser() {
+    const user = await getUser();
     if (user) {
-        location.replace('/todos')
+        location.replace('/')
     }
 }
