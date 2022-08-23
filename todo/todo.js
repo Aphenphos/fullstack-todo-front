@@ -1,16 +1,18 @@
 import { logoutUser, redirectNonUsers } from "../utils.js";
 import { getAllTodos, createTodo } from '../todo-utils.js';
+import createTodos from "../components/renderTodo.js";
 
 let user = null;
 let todos = [];
 
 const newTaskForm = document.getElementById('new-form');
 const logOutButton = document.getElementById('logout');
+const CreateTodos = createTodos(document.querySelector('#todo-list'));
 
 async function handlePageLoad() {
     await redirectNonUsers();
     todos = await getAllTodos();
-    console.log(todos);
+    // console.log(todos);
     display();
 }
 
