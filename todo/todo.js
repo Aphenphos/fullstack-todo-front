@@ -1,5 +1,6 @@
 import { logoutUser, redirectNonUsers } from "../utils.js";
 import { getAllTodos, createTodo } from '../todo-utils.js';
+import createTodos from "../components/renderTodo.js";
 
 let user = null;
 let todos = [];
@@ -26,8 +27,10 @@ logout.addEventListener('click', async () => {
     await logoutUser();
 })
 
-function display() {
+const CreateTodos = createTodos(document.querySelector('#tasks'));
 
+function display() {
+CreateTodos()
 }
 
 handlePageLoad();
