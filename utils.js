@@ -12,7 +12,7 @@ export async function signUpUser(userInfo) {
     });
     const data = await resp.json();
     if (resp.ok) {
-        location.replace('/todos')
+        location.replace('/todo')
     } else {
         console.error(data.message);
     }
@@ -30,7 +30,33 @@ export async function signInUser(userInfo) {
     });
     if (resp.ok) {
         const user = await resp.json();
+        location.replace('/todo')
         return user;
+    }
+}
+
+export async function getUser() {
+    const resp = await fetch(`${BASE_URL}/api/v1/users/me`, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+    });
+    if (resp.ok) {
+        const user = await resp.json();
+        return user;
+    }
+}
+
+export async function logoutUser() {
+    const resp = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
+        method: 'DELETE',
+        credentials: 'include',
+    });
+    if (resp.ok) {
+        location.replace('../')
     }
 }
 
