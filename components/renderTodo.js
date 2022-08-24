@@ -1,6 +1,6 @@
 
 export default function createTodos(root) {
-    return ({ todos }) => {
+    return (todos) => {
         root.innerHTML = '';
         for (const todo of todos) {
             root.append(Todo({ todo }));

@@ -20,6 +20,7 @@ newTaskForm.addEventListener('submit', async (e) => {
     const formData = new FormData(newTaskForm);
     await createTodo({task: formData.get('new-task')});
     console.log(newTaskForm);
+    display()
 })
 
 
@@ -30,7 +31,7 @@ logout.addEventListener('click', async () => {
 const CreateTodos = createTodos(document.querySelector('#tasks'));
 
 function display() {
-CreateTodos()
+CreateTodos(todos)
 }
 
 handlePageLoad();
