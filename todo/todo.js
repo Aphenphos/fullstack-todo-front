@@ -11,7 +11,6 @@ const logOutButton = document.getElementById('logout');
 export async function handlePageLoad() {
     await redirectNonUsers();
     todos = await getAllTodos();
-    console.log(todos);
     display();
 }
 
