@@ -14,6 +14,7 @@ signUpForm.addEventListener('submit', async (e) => {
         email: formData.get('email'),
         password: formData.get('password'),
     });
+    signUpForm.reset();
     console.log(signUpForm)
 });
 
@@ -24,6 +25,7 @@ signInForm.addEventListener('submit', async (e) => {
         email: formData.get('email'),
         password: formData.get('password'),
     });
+    signInForm.reset();
     console.log(signInForm)
 });
 

@@ -19,8 +19,14 @@ function Todo({ todo }) {
     checkbox.classList.add('toggle');
     checkbox.type = 'checkbox';
     checkbox.addEventListener('change', () => {
-        placeHolder(todo);   
+        todoDone(todo);   
     });
+
+    const button = document.createElement('button');
+    button.classList.add('delete-button');
+    button.addEventListener('click', () => {
+        todoDelete(todo);
+    })
 
     li.append(h2, checkbox);
 
