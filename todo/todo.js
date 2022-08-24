@@ -19,8 +19,8 @@ newTaskForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(newTaskForm);
     await createTodo({task: formData.get('new-task')});
-    console.log(newTaskForm);
-    display()
+    newTaskForm.reset();
+    handlePageLoad();
 })
 
 
@@ -30,8 +30,8 @@ logout.addEventListener('click', async () => {
 
 const CreateTodos = createTodos(document.querySelector('#tasks'));
 
-function display() {
-CreateTodos(todos)
+async function display() {
+await CreateTodos(todos)
 }
 
 handlePageLoad();
