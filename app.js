@@ -15,7 +15,6 @@ signUpForm.addEventListener('submit', async (e) => {
         password: formData.get('password'),
     });
     signUpForm.reset();
-    console.log(signUpForm)
 });
 
 signInForm.addEventListener('submit', async (e) => {
@@ -26,7 +25,6 @@ signInForm.addEventListener('submit', async (e) => {
         password: formData.get('password'),
     });
     signInForm.reset();
-    console.log(signInForm)
 });
 
 onPageLoad();
