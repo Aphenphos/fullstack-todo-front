@@ -26,3 +26,16 @@ export async function createTodo(todo) {
     });
     return resp.json();
 }
+
+export async function updateTodo(id, data) {
+    const resp = await fetch(`${BASE_URL}/api/v1/todos/${id}`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        credentials: 'include',
+    });
+    return resp.json();
+}

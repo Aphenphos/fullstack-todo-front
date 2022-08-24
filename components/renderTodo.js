@@ -1,4 +1,6 @@
 
+import { updateTodo } from "../todo-utils.js";
+
 export default function createTodos(root) {
     return (todos) => {
         root.innerHTML = '';
@@ -19,7 +21,11 @@ function Todo({ todo }) {
     checkbox.classList.add('toggle');
     checkbox.type = 'checkbox';
     checkbox.addEventListener('change', () => {
-        todoDone(todo);   
+        if (checkbox.checked) {
+            updateTodo(todo.id, { done: true });
+        } else {
+            updateTodo(todo.id, { done: false });
+        }   
     });
 
     const button = document.createElement('button');
@@ -27,6 +33,9 @@ function Todo({ todo }) {
     button.addEventListener('click', () => {
         todoDelete(todo);
     })
+    if (todo.done === true) {
+        checkbox.checked = true
+    };
 
     li.append(h2, checkbox);
 
