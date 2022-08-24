@@ -19,7 +19,6 @@ export async function signUpUser(userInfo) {
 }
 
 export async function signInUser(userInfo) {
-    console.log(userInfo)
     const resp = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
         method: 'POST',
         headers: {
@@ -29,7 +28,6 @@ export async function signInUser(userInfo) {
         body: JSON.stringify(userInfo),
         credentials: 'include',
     });
-    console.log(resp.body)
     if (resp.ok) {
         const user = await resp.json();
         location.replace('/todo')
@@ -42,7 +40,6 @@ export async function getUser() {
         method: 'GET',
         credentials: 'include',
     });
-    console.log(resp.body)
     if (resp.ok) {
         const user = await resp.json();
         return user;
@@ -62,7 +59,6 @@ export async function logoutUser() {
 export async function redirectNonUsers() {
     const user = await getUser();
     if (!user) {
-        console.log('no user')
         location.replace('/')
     }
 }
