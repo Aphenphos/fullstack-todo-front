@@ -1,5 +1,6 @@
 
-import { updateTodo } from "../todo-utils.js";
+import { deleteTodo, updateTodo } from "../todo-utils.js";
+import { handlePageLoad } from "../todo/todo.js";
 
 export default function createTodos(root) {
     return (todos) => {
@@ -29,15 +30,17 @@ function Todo({ todo }) {
     });
 
     const button = document.createElement('button');
+    button.textContent = 'Delete'
     button.classList.add('delete-button');
     button.addEventListener('click', () => {
-        todoDelete(todo);
+        deleteTodo(todo.id);
+        handlePageLoad();
     })
     if (todo.done === true) {
         checkbox.checked = true
     };
 
-    li.append(h2, checkbox);
+    li.append(h2, checkbox, button);
 
     return li;
 }
