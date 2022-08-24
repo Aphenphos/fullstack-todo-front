@@ -7,7 +7,6 @@ let todos = [];
 
 const newTaskForm = document.getElementById('new-form');
 const logOutButton = document.getElementById('logout');
-const CreateTodos = createTodos(document.querySelector('#todo-list'));
 
 async function handlePageLoad() {
     await redirectNonUsers();
