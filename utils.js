@@ -14,6 +14,7 @@ export async function signUpUser(userInfo) {
     if (resp.ok) {
         location.replace('/todo');
     } else {
+        // eslint-disable-next-line no-console
         console.error(data.message);
     }
 }
