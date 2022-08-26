@@ -1,8 +1,7 @@
-import { logoutUser, redirectNonUsers } from "../utils.js";
+import { logoutUser, redirectNonUsers } from '../utils.js';
 import { getAllTodos, createTodo } from '../todo-utils.js';
-import createTodos from "../components/renderTodo.js";
+import createTodos from '../components/renderTodo.js';
 
-let user = null;
 let todos = [];
 
 const newTaskForm = document.getElementById('new-form');
@@ -15,23 +14,23 @@ export async function handlePageLoad() {
     display();
 }
 
-newTaskForm.addEventListener('submit', async (e) => {
+newTaskForm.addEventListener('submit', async(e) => {
     e.preventDefault();
     const formData = new FormData(newTaskForm);
-    await createTodo({task: formData.get('new-task')});
+    await createTodo({ task: formData.get('new-task') });
     newTaskForm.reset();
     handlePageLoad();
-})
+});
 
 
-logout.addEventListener('click', async () => {
+logOutButton.addEventListener('click', async() => {
     await logoutUser();
-})
+});
 
 const CreateTodos = createTodos(document.querySelector('#tasks'));
 
 async function display() {
-await CreateTodos(todos)
+    await CreateTodos(todos);
 }
 
 handlePageLoad();

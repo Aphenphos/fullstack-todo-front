@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:7890';
+const BASE_URL = 'https://fullstack-todo-maxzak.herokuapp.com';
 //localhost:7890/api/v1/users
 export async function signUpUser(userInfo) {
     const resp = await fetch(`${BASE_URL}/api/v1/users`, {
@@ -12,14 +12,13 @@ export async function signUpUser(userInfo) {
     });
     const data = await resp.json();
     if (resp.ok) {
-        location.replace('/todo')
+        location.replace('/todo');
     } else {
         console.error(data.message);
     }
 }
 
 export async function signInUser(userInfo) {
-    console.log(userInfo)
     const resp = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
         method: 'POST',
         headers: {
@@ -29,10 +28,9 @@ export async function signInUser(userInfo) {
         body: JSON.stringify(userInfo),
         credentials: 'include',
     });
-    console.log(resp.body)
     if (resp.ok) {
         const user = await resp.json();
-        location.replace('/todo')
+        location.replace('/todo');
         return user;
     }
 }
@@ -42,7 +40,6 @@ export async function getUser() {
         method: 'GET',
         credentials: 'include',
     });
-    console.log(resp.body)
     if (resp.ok) {
         const user = await resp.json();
         return user;
@@ -55,21 +52,20 @@ export async function logoutUser() {
         credentials: 'include',
     });
     if (resp.ok) {
-        location.replace('../')
+        location.replace('../');
     }
 }
 
 export async function redirectNonUsers() {
     const user = await getUser();
     if (!user) {
-        console.log('no user')
-        location.replace('/')
+        location.replace('/');
     }
 }
 
 export async function redirectExistingUsers() {
     const user = await getUser();
     if (user) {
-        location.replace('/todo')
+        location.replace('/todo');
     }
 }

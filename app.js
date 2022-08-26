@@ -1,13 +1,13 @@
-const signUpForm = document.getElementById('user-input')
-const signInForm = document.getElementById('existing-user-input')
+const signUpForm = document.getElementById('user-input');
+const signInForm = document.getElementById('existing-user-input');
 import { redirectExistingUsers, signUpUser, signInUser } from './utils.js';
 
 
 async function onPageLoad() {
-   await redirectExistingUsers();
+    await redirectExistingUsers();
 }
 
-signUpForm.addEventListener('submit', async (e) => {
+signUpForm.addEventListener('submit', async(e) => {
     e.preventDefault();
     const formData = new FormData(signUpForm);
     await signUpUser({
@@ -15,10 +15,9 @@ signUpForm.addEventListener('submit', async (e) => {
         password: formData.get('password'),
     });
     signUpForm.reset();
-    console.log(signUpForm)
 });
 
-signInForm.addEventListener('submit', async (e) => {
+signInForm.addEventListener('submit', async(e) => {
     e.preventDefault();
     const formData = new FormData(signInForm);
     await signInUser({
@@ -26,7 +25,6 @@ signInForm.addEventListener('submit', async (e) => {
         password: formData.get('password'),
     });
     signInForm.reset();
-    console.log(signInForm)
 });
 
 onPageLoad();
